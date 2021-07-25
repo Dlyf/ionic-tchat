@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
 */
 @Injectable()
 export class ChatApiProvider {
-  private obsMessages: Observable< Array<Message> >;
+  private obsMessages: Observable<any[]>;
   private users: Array<User>;
   messages: Array<Object>;
 
@@ -32,7 +32,7 @@ export class ChatApiProvider {
     //   new User('Domi', 'domilung@gmail.com'),
     //   new User('Hervé', 'ab@gmail.com'),
     //   new User('Dédé', 'ab@gmail.com'),
-      
+
     // ];
   }
   getUsers(): Array<User> {
@@ -41,7 +41,7 @@ export class ChatApiProvider {
   sendMessage(msg: Message) {
     this.db.list('messages').push(msg);
   }
-  subscribe( fct: (data: Array<Message>) => void ) {
+  subscribe(fct: (data: Array<Message>) => void) {
     this.obsMessages.subscribe(fct);
   }
   getMessage(): Array<Message> {
